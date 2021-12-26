@@ -1,3 +1,11 @@
+# Upgrade to Flutter 2.8
+
+## Flutter (Channel stable, 2.8.1, on macOS 12.1 21C52 darwin-x64, locale en)
+• Flutter version 2.8.1
+• Dart version 2.15.1
+
+# Original Description
+
 ![](https://github.com/kaina404/FlutterDouBan/blob/master-new/logo.png)
 
 
