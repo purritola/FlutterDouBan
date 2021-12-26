@@ -6,5 +6,4 @@ class SummaryWidget extends StatelessWidget {
     // TODO: implement build
     return null;
   }
-
 }

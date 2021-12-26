@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../bean/movie_long_comments_entity.dart';
-import '../../widgets/rating_bar.dart';
-import '../../constant/constant.dart';
-import 'package:doubanapp/router.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+
+import '../../bean/movie_long_comments_entity.dart';
+import '../../constant/constant.dart';
+import '../../widgets/rating_bar.dart';
 
 ///电影长评论
 class LongCommentWidget extends StatelessWidget {

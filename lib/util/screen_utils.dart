@@ -1,5 +1,7 @@
-import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
+
+import 'package:flutter/material.dart';
+
 //系统默认的appBar等高度
 //位于Dart Packages/flutter/src/material/constans.dart
 

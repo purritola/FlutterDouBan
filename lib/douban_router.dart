@@ -1,16 +1,16 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:doubanapp/pages/detail/detail_page.dart';
 import 'package:doubanapp/pages/container_page.dart';
-import 'package:doubanapp/pages/videos_play_page.dart';
-import 'package:doubanapp/pages/search/search_page.dart';
-import 'package:doubanapp/pages/photo_hero_page.dart';
+import 'package:doubanapp/pages/detail/detail_page.dart';
 import 'package:doubanapp/pages/person_detail_page.dart';
+import 'package:doubanapp/pages/photo_hero_page.dart';
+import 'package:doubanapp/pages/search/search_page.dart';
+import 'package:doubanapp/pages/videos_play_page.dart';
 import 'package:doubanapp/pages/web_view_page.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 ///https://www.jianshu.com/p/b9d6ec92926f
 
-class Router {
+class DoubanRouter {
   static const homePage = 'app://';
   static const detailPage = 'app://DetailPage';
   static const playListPage = 'app://VideosPlayPage';
@@ -58,13 +58,13 @@ class Router {
 //    }));
 //  }
 
-  Router.pushNoParams(BuildContext context, String url) {
+  DoubanRouter.pushNoParams(BuildContext context, String url) {
     Navigator.push(context, MaterialPageRoute(builder: (context) {
       return _getPage(url, null);
     }));
   }
 
-  Router.push(BuildContext context, String url, dynamic params) {
+  DoubanRouter.push(BuildContext context, String url, dynamic params) {
     Navigator.push(context, MaterialPageRoute(builder: (context) {
       return _getPage(url, params);
     }));

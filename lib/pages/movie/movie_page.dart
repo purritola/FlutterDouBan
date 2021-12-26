@@ -1,33 +1,31 @@
-import 'package:flutter/material.dart';
-import 'package:doubanapp/pages/movie/title_widget.dart';
-import 'package:doubanapp/pages/movie/today_play_movie_widget.dart';
-import 'package:doubanapp/http/API.dart';
-import 'package:doubanapp/pages/movie/hot_soon_tab_bar.dart';
-import 'package:doubanapp/widgets/item_count_title.dart';
-import 'package:doubanapp/widgets/subject_mark_image_widget.dart';
+import 'dart:math' as math;
+
 import 'package:doubanapp/bean/subject_entity.dart';
 import 'package:doubanapp/bean/top_item_bean.dart';
-import 'package:doubanapp/widgets/rating_bar.dart';
 import 'package:doubanapp/constant/color_constant.dart';
-import 'dart:math' as math;
-import 'package:doubanapp/widgets/image/cache_img_radius.dart';
 import 'package:doubanapp/constant/constant.dart';
+import 'package:doubanapp/pages/movie/hot_soon_tab_bar.dart';
+import 'package:doubanapp/pages/movie/title_widget.dart';
+import 'package:doubanapp/pages/movie/today_play_movie_widget.dart';
 import 'package:doubanapp/pages/movie/top_item_widget.dart';
-import 'package:doubanapp/router.dart';
-import 'package:doubanapp/http/http_request.dart';
+import 'package:doubanapp/repository/movie_repository.dart';
+import 'package:doubanapp/widgets/image/cache_img_radius.dart';
+import 'package:doubanapp/widgets/item_count_title.dart';
+import 'package:doubanapp/widgets/loading_widget.dart';
+import 'package:doubanapp/widgets/rating_bar.dart';
+import 'package:doubanapp/widgets/subject_mark_image_widget.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 //import 'package:palette_generator/palette_generator.dart';
 import 'package:flutter/rendering.dart';
-import 'package:doubanapp/repository/movie_repository.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:doubanapp/widgets/loading_widget.dart';
-import 'package:doubanapp/util/screen_utils.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+
+import '../../douban_router.dart';
+
 ///书影音-电影
 ///这个Widget整个布局较为复杂
 ///整个是使用CustomScrollView内存放各种Slivers构成
 class MoviePage extends StatefulWidget {
-
-  MoviePage({Key key}):super(key:key);
+  MoviePage({Key key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -35,7 +33,8 @@ class MoviePage extends StatefulWidget {
   }
 }
 
-class _MoviePageState extends State<MoviePage>  with AutomaticKeepAliveClientMixin {
+class _MoviePageState extends State<MoviePage>
+    with AutomaticKeepAliveClientMixin {
   Widget titleWidget, hotSoonTabBarPadding;
   HotSoonTabBar hotSoonTabBar;
   List<Subject> hotShowBeans = List(); //影院热映
@@ -160,7 +159,7 @@ class _MoviePageState extends State<MoviePage>  with AutomaticKeepAliveClientMix
         ),
       ),
       onTap: () {
-        Router.push(context, Router.detailPage, comingSoonBean.id);
+        DoubanRouter.push(context, DoubanRouter.detailPage, comingSoonBean.id);
       },
     );
   }
@@ -205,7 +204,7 @@ class _MoviePageState extends State<MoviePage>  with AutomaticKeepAliveClientMix
         ),
       ),
       onTap: () {
-        Router.push(context, Router.detailPage, hotMovieBean.id);
+        DoubanRouter.push(context, DoubanRouter.detailPage, hotMovieBean.id);
       },
     );
   }
@@ -337,8 +336,8 @@ class _MoviePageState extends State<MoviePage>  with AutomaticKeepAliveClientMix
                   crossAxisSpacing: 10.0,
                   mainAxisSpacing: 0.0,
                   childAspectRatio: _getRadio())),
-          getCommonImg(Constant.IMG_TMP1, (){
-            Router.pushNoParams(context, "http://www.flutterall.com");
+          getCommonImg(Constant.IMG_TMP1, () {
+            DoubanRouter.pushNoParams(context, "http://www.flutterall.com");
           }),
           SliverToBoxAdapter(
             child: Padding(

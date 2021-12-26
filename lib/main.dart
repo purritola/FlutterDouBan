@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
 import 'dart:io';
-import 'package:flutter/services.dart';
-import 'package:doubanapp/widgets/bottom_drag_widget.dart';
+
 import 'package:doubanapp/pages/splash/splash_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         theme: ThemeData(backgroundColor: Colors.white),
         home: Scaffold(
-          resizeToAvoidBottomPadding: false,
+          resizeToAvoidBottomInset: false,
           body: SplashWidget(),
         ),
       ),
@@ -42,7 +42,7 @@ class RestartWidget extends StatefulWidget {
 
   static restartApp(BuildContext context) {
     final _RestartWidgetState state =
-        context.ancestorStateOfType(const TypeMatcher<_RestartWidgetState>());
+        context.findAncestorStateOfType<_RestartWidgetState>();
     state.restartApp();
   }
 

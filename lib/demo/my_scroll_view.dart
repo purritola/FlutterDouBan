@@ -4,9 +4,9 @@
 
 import 'dart:math' as math;
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/material.dart';
 import 'package:doubanapp/demo/my_scrollable.dart' as my_scrollable;
+import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 /// A widget that scrolls.
 ///
@@ -471,7 +471,7 @@ abstract class BoxScrollView extends ScrollView {
     Widget sliver = buildChildLayout(context);
     EdgeInsetsGeometry effectivePadding = padding;
     if (padding == null) {
-      final MediaQueryData mediaQuery = MediaQuery.of(context, nullOk: true);
+      final MediaQueryData mediaQuery = MediaQuery.maybeOf(context);
       if (mediaQuery != null) {
         // Automatically pad sliver with padding from MediaQuery.
         final EdgeInsets mediaQueryHorizontalPadding =

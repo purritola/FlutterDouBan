@@ -1,9 +1,9 @@
 //import 'package:palette_generator/palette_generator.dart';
-import 'package:doubanapp/util/palette_generator.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
+import 'package:doubanapp/util/palette_generator.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 const Color _kBackgroundColor = Color(0xffa0a0a0);
 const Color _kSelectionRectangleBackground = Color(0x15000000);
@@ -93,7 +93,7 @@ class _ImageColorsState extends State<ImageColors> {
   // Called when the drag ends. Sets the region, and updates the colors.
   void _onPanEnd(DragEndDetails details) async {
     Rect newRegion =
-    (Offset.zero & imageKey.currentContext.size).intersect(dragRegion);
+        (Offset.zero & imageKey.currentContext.size).intersect(dragRegion);
     if (newRegion.size.width < 4 && newRegion.size.width < 4) {
       newRegion = Offset.zero & imageKey.currentContext.size;
     }
@@ -238,24 +238,24 @@ class PaletteSwatch extends StatelessWidget {
       padding: const EdgeInsets.all(2.0),
       child: color == null
           ? const Placeholder(
-        fallbackWidth: 34.0,
-        fallbackHeight: 20.0,
-        color: Color(0xff404040),
-        strokeWidth: 2.0,
-      )
+              fallbackWidth: 34.0,
+              fallbackHeight: 20.0,
+              color: Color(0xff404040),
+              strokeWidth: 2.0,
+            )
           : Container(
-        decoration: BoxDecoration(
-            color: color,
-            border: Border.all(
-              width: 1.0,
-              color: _kPlaceholderColor,
-              style: colorDistance < 0.2
-                  ? BorderStyle.solid
-                  : BorderStyle.none,
-            )),
-        width: 34.0,
-        height: 20.0,
-      ),
+              decoration: BoxDecoration(
+                  color: color,
+                  border: Border.all(
+                    width: 1.0,
+                    color: _kPlaceholderColor,
+                    style: colorDistance < 0.2
+                        ? BorderStyle.solid
+                        : BorderStyle.none,
+                  )),
+              width: 34.0,
+              height: 20.0,
+            ),
     );
 
     if (label != null) {

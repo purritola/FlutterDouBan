@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:doubanapp/widgets/rating_bar.dart';
+import 'package:flutter/material.dart';
 
 class ScoreStartWidget extends StatefulWidget {
   final score;
@@ -128,7 +128,7 @@ class _ScoreStartState extends State<ScoreStartWidget> {
   }
 
   startsLine(int startCount, double percent) {
-    if(percent == null || percent.isNaN){
+    if (percent == null || percent.isNaN) {
       percent = 0.0;
     }
     return Padding(

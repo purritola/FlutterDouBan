@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class LoadingWidget {
   static Widget getLoading({Color backgroundColor, Color loadingBgColor}) {
@@ -10,7 +10,8 @@ class LoadingWidget {
       ),
       child: new Container(
         decoration: new BoxDecoration(
-            color: loadingBgColor == null ? Colors.white : loadingBgColor, borderRadius: new BorderRadius.circular(10.0)),
+            color: loadingBgColor == null ? Colors.white : loadingBgColor,
+            borderRadius: new BorderRadius.circular(10.0)),
         width: 70.0,
         height: 70.0,
         alignment: AlignmentDirectional.center,

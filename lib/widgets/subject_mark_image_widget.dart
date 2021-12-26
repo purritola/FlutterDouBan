@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+
 //import 'package:doubanapp/widgets/image/cached_network_image.dart';
 //import 'package:connectivity/connectivity.dart';
 
@@ -12,6 +13,7 @@ class SubjectMarkImageWidget extends StatefulWidget {
   final BoolCallback markAdd;
   var height;
   final width;
+
   ///360 x 513
 
   SubjectMarkImageWidget(this.imgNetUrl,
@@ -46,14 +48,16 @@ class _SubjectMarkImageState extends State<SubjectMarkImageWidget> {
       height: imgWH,
     );
     defaultMarkIcon = ClipRRect(
-      borderRadius: BorderRadius.only(topLeft: Radius.circular(5.0), bottomRight: Radius.circular(5.0)),
+      borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(5.0), bottomRight: Radius.circular(5.0)),
       child: Image(
         image: AssetImage('assets/images/ic_subject_rating_mark_wish.png'),
         width: imgWH,
         height: imgWH,
       ),
     );
-    var defaultImg = Image.asset('assets/images/ic_default_img_subject_movie.9.png');
+    var defaultImg =
+        Image.asset('assets/images/ic_default_img_subject_movie.9.png');
 
     loadImg = ClipRRect(
       child: CachedNetworkImage(
@@ -61,7 +65,7 @@ class _SubjectMarkImageState extends State<SubjectMarkImageWidget> {
         width: width,
         height: height,
         fit: BoxFit.fill,
-        placeholder: (BuildContext context, String url){
+        placeholder: (BuildContext context, String url) {
           return defaultImg;
         },
         fadeInDuration: const Duration(milliseconds: 80),
@@ -90,5 +94,4 @@ class _SubjectMarkImageState extends State<SubjectMarkImageWidget> {
       ],
     );
   }
-
 }

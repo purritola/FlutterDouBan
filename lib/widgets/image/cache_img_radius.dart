@@ -8,6 +8,7 @@ class CacheImgRadius extends StatelessWidget {
   final String imgUrl;
   final double radius;
   final OnTab onTab;
+
   CacheImgRadius({Key key, @required this.imgUrl, this.radius, this.onTab})
       : super(key: key);
 

@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:doubanapp/constant/text_size_constant.dart';
 import 'package:doubanapp/constant/color_constant.dart';
+import 'package:doubanapp/constant/text_size_constant.dart';
+import 'package:flutter/material.dart';
 
 typedef OnClick = void Function();
 
@@ -33,7 +33,9 @@ class ItemCountTitle extends StatelessWidget {
           Text(
             '全部 ${count == null ? 0 : count} > ',
             style: TextStyle(
-                fontSize: 12, color: Colors.grey, ),
+              fontSize: 12,
+              color: Colors.grey,
+            ),
           )
         ],
       ),

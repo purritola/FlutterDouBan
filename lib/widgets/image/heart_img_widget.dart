@@ -47,6 +47,7 @@ class _AnimatedImg extends AnimatedWidget {
   static final _opacityTween = new Tween<double>(begin: 0.5, end: 1.0);
   static final _sizeTween = new Tween<double>(begin: 290.0, end: 300.0);
   final Image img;
+
   _AnimatedImg(this.img, {Key key, Animation<double> animation})
       : super(key: key, listenable: animation);
 

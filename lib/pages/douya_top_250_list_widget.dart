@@ -1,12 +1,12 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:doubanapp/http/API.dart';
-import 'package:doubanapp/router.dart';
 import 'package:doubanapp/bean/subject_entity.dart';
+import 'package:doubanapp/http/API.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+import '../douban_router.dart';
 
 class DouBanListView extends StatefulWidget {
-
-  DouBanListView({Key key}):super(key:key);
+  DouBanListView({Key key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -68,7 +68,7 @@ class DouBanState extends State<DouBanListView>
             ),
             onTap: () {
               //监听点击事件
-              Router.push(context, Router.detailPage, bean.id);
+              DoubanRouter.push(context, DoubanRouter.detailPage, bean.id);
             },
           );
         });

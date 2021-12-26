@@ -6,9 +6,9 @@ import 'dart:async';
 import 'dart:ui';
 
 import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/material.dart';
 
 export 'package:flutter/physics.dart' show Tolerance;
 
@@ -196,7 +196,7 @@ class Scrollable extends StatefulWidget {
   /// ```
   static ScrollableState of(BuildContext context) {
     final _ScrollableScope widget =
-        context.inheritFromWidgetOfExactType(_ScrollableScope);
+        context.dependOnInheritedWidgetOfExactType<_ScrollableScope>();
     return widget?.scrollable;
   }
 
@@ -566,6 +566,11 @@ class ScrollableState extends State<Scrollable>
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties.add(DiagnosticsProperty<ScrollPosition>('position', position));
+  }
+
+  @override
+  void saveOffset(double offset) {
+    // TODO: implement saveOffset
   }
 }
 

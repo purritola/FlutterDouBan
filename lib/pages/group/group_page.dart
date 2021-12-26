@@ -1,12 +1,14 @@
-import 'package:flutter/material.dart';
-import 'package:doubanapp/widgets/search_text_field_widget.dart';
-import 'package:doubanapp/router.dart';
+import 'package:doubanapp/bean/subject_entity.dart';
 import 'package:doubanapp/constant/constant.dart';
 import 'package:doubanapp/http/API.dart';
 import 'package:doubanapp/http/http_request.dart';
-import 'package:doubanapp/bean/subject_entity.dart';
-import 'package:doubanapp/widgets/loading_widget.dart';
 import 'package:doubanapp/widgets/image/radius_img.dart';
+import 'package:doubanapp/widgets/loading_widget.dart';
+import 'package:doubanapp/widgets/search_text_field_widget.dart';
+import 'package:flutter/material.dart';
+
+import '../../douban_router.dart';
+
 ///小组
 class GroupPage extends StatelessWidget {
   @override
@@ -21,7 +23,7 @@ class GroupPage extends StatelessWidget {
             margin: EdgeInsets.all(Constant.MARGIN_RIGHT),
             hintText: hintText,
             onTab: () {
-              Router.push(context, Router.searchPage, hintText);
+              DoubanRouter.push(context, DoubanRouter.searchPage, hintText);
             },
           ),
           Expanded(
@@ -106,14 +108,18 @@ class _GroupWidgetState extends State<_GroupWidget> {
                     style:
                         TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold),
                   ),
-                  Text(bean.pubdates != null ? bean.pubdates[0] : '', style: TextStyle(fontSize: 13.0))
+                  Text(bean.pubdates != null ? bean.pubdates[0] : '',
+                      style: TextStyle(fontSize: 13.0))
                 ],
               ),
             ),
           ),
           Padding(
             padding: EdgeInsets.only(right: 10.0),
-            child: Text('${bean.collect_count}人', style: TextStyle(fontSize: 13.0),),
+            child: Text(
+              '${bean.collect_count}人',
+              style: TextStyle(fontSize: 13.0),
+            ),
           ),
           GestureDetector(
             child: Image.asset(
@@ -133,7 +139,7 @@ class _GroupWidgetState extends State<_GroupWidget> {
         ],
       ),
       onTap: () {
-        Router.push(context, Router.detailPage, bean.id);
+        DoubanRouter.push(context, DoubanRouter.detailPage, bean.id);
       },
     );
   }

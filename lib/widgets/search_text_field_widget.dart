@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 ///文本搜索框
 class SearchTextFieldWidget extends StatelessWidget {
   final ValueChanged<String> onSubmitted;
@@ -6,7 +7,8 @@ class SearchTextFieldWidget extends StatelessWidget {
   final String hintText;
   final EdgeInsetsGeometry margin;
 
-  SearchTextFieldWidget({Key key, this.hintText, this.onSubmitted, this.onTab, this.margin})
+  SearchTextFieldWidget(
+      {Key key, this.hintText, this.onSubmitted, this.onTab, this.margin})
       : super(key: key);
 
   @override

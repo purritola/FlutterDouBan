@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 typedef VoidCallback = void Function();
 
@@ -77,7 +77,7 @@ class _State extends State<LookConfirmButton> {
           _color = _defaultColor;
         });
       },
-      onTapCancel: ((){
+      onTapCancel: (() {
         setState(() {
           _color = _defaultColor;
         });

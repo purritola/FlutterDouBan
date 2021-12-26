@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:doubanapp/widgets/title_bar.dart';
-import 'package:doubanapp/router.dart';
 
 class PhotoHeroPage extends StatelessWidget {
   final String photoUrl;

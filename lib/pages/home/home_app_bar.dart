@@ -3,13 +3,14 @@
 // found in the LICENSE file.
 
 import 'dart:math' as math;
-import 'package:flutter/material.dart';
+
+import 'package:doubanapp/pages/home/my_home_tab_bar.dart';
+import 'package:doubanapp/widgets/search_text_field_widget.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:doubanapp/widgets/search_text_field_widget.dart';
-import 'package:doubanapp/pages/home/my_home_tab_bar.dart';
 
 // Examples can assume:
 // void _airDress() { }
@@ -379,7 +380,7 @@ class _AppBarState extends State<AppBar> {
     assert(debugCheckHasMaterialLocalizations(context));
     final ThemeData themeData = Theme.of(context);
     final AppBarTheme appBarTheme = AppBarTheme.of(context);
-    final ScaffoldState scaffold = Scaffold.of(context, nullOk: true);
+    final ScaffoldState scaffold = Scaffold.maybeOf(context);
     final ModalRoute<dynamic> parentRoute = ModalRoute.of(context);
 
     final bool hasDrawer = scaffold?.hasDrawer ?? false;
@@ -390,12 +391,12 @@ class _AppBarState extends State<AppBar> {
 
     IconThemeData appBarIconTheme =
         widget.iconTheme ?? appBarTheme.iconTheme ?? themeData.primaryIconTheme;
-    TextStyle centerStyle = widget.textTheme?.title ??
-        appBarTheme.textTheme?.title ??
-        themeData.primaryTextTheme.title;
-    TextStyle sideStyle = widget.textTheme?.body1 ??
-        appBarTheme.textTheme?.body1 ??
-        themeData.primaryTextTheme.body1;
+    TextStyle centerStyle = widget.textTheme?.headline1 ??
+        appBarTheme.textTheme?.headline1 ??
+        themeData.primaryTextTheme.headline1;
+    TextStyle sideStyle = widget.textTheme?.bodyText1 ??
+        appBarTheme.textTheme?.bodyText1 ??
+        themeData.primaryTextTheme.bodyText1;
 
     if (widget.toolbarOpacity != 1.0) {
       final double opacity =
@@ -560,8 +561,8 @@ class _FloatingAppBarState extends State<_FloatingAppBar> {
   }
 
   RenderSliverFloatingPersistentHeader _headerRenderer() {
-    return context.ancestorRenderObjectOfType(
-        const TypeMatcher<RenderSliverFloatingPersistentHeader>());
+    return context
+        .findAncestorRenderObjectOfType<RenderSliverFloatingPersistentHeader>();
   }
 
   void _isScrollingListener() {
@@ -1106,7 +1107,6 @@ class _SliverAppBarState extends State<SliverAppBar>
   void _updateSnapConfiguration() {
     if (widget.snap && widget.floating) {
       _snapConfiguration = FloatingHeaderSnapConfiguration(
-        vsync: this,
         curve: Curves.easeOut,
         duration: const Duration(milliseconds: 200),
       );
@@ -1132,7 +1132,7 @@ class _SliverAppBarState extends State<SliverAppBar>
   Widget build(BuildContext context) {
     assert(!widget.primary || debugCheckHasMediaQuery(context));
     final double topPadding = 0.0;
-     final double collapsedHeight = widget.bottom.preferredSize.height + 26.0;
+    final double collapsedHeight = widget.bottom.preferredSize.height + 26.0;
 //    final collapsedHeight = 80.0;
 
     return MediaQuery.removePadding(
@@ -1192,7 +1192,7 @@ getWidget() {
             // This is not necessary if the "headerSliverBuilder" only builds
             // widgets that do not overlap the next sliver.
             handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
-            child: SliverAppBar(
+            sliver: SliverAppBar(
               pinned: true,
               expandedHeight: 100.0,
               primary: false,

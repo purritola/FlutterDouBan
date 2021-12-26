@@ -1,7 +1,7 @@
 //import 'package:palette_generator/palette_generator.dart';
 import 'package:doubanapp/util/palette_generator.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 typedef ColorCallBack = void Function(Color color);
 
@@ -18,10 +18,9 @@ class PickImgMainColor {
     }
   }
 
-  static Future<void> pick2(
-      ImageProvider imageProvider) async {
+  static Future<void> pick2(ImageProvider imageProvider) async {
     var paletteGenerator =
-    await PaletteGenerator.fromImageProvider(imageProvider);
+        await PaletteGenerator.fromImageProvider(imageProvider);
     if (paletteGenerator != null && paletteGenerator.colors.isNotEmpty) {
       return (paletteGenerator.colors.toList()[0]);
     } else {

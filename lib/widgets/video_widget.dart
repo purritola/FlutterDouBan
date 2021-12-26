@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/material.dart';
 //import 'package:doubanapp/widgets/image/cached_network_image.dart';
 import 'package:doubanapp/constant/constant.dart';
 import 'package:doubanapp/widgets/video_progress_bar.dart';
+import 'package:flutter/material.dart';
 
 ///http://vt1.doubanio.com/201902111139/0c06a85c600b915d8c9cbdbbaf06ba9f/view/movie/M/302420330.mp4
 class VideoWidget extends StatefulWidget {
@@ -40,7 +40,6 @@ class _VideoWidgetState extends State<VideoWidget> {
       if (mounted) {
         setState(() {});
       }
-
     };
   }
 
@@ -50,7 +49,7 @@ class _VideoWidgetState extends State<VideoWidget> {
     print('播放${widget.url}');
     _controller = VideoPlayerController.network(widget.url)
       ..initialize().then((_) {
-        if(mounted){
+        if (mounted) {
           //初始化完成后，更新状态
           setState(() {});
           if (_controller.value.duration == _controller.value.position) {
@@ -62,14 +61,11 @@ class _VideoWidgetState extends State<VideoWidget> {
     _controller.addListener(listener);
   }
 
-
-
   @override
   void deactivate() {
     _controller.removeListener(listener);
     super.deactivate();
   }
-
 
   FadeAnimation imageFadeAnim;
 
@@ -181,7 +177,7 @@ class _VideoWidgetState extends State<VideoWidget> {
 
   ///更新播放的URL
   void setUrl(String url) {
-    if(mounted){
+    if (mounted) {
       print('updateUrl');
       if (_controller != null) {
         _controller.removeListener(listener);

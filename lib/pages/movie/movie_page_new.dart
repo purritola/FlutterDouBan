@@ -1,29 +1,18 @@
-import 'package:flutter/material.dart';
-import 'package:doubanapp/pages/movie/title_widget.dart';
-import 'package:doubanapp/pages/movie/today_play_movie_widget.dart';
+
+import 'package:doubanapp/bean/subject_entity.dart';
+import 'package:doubanapp/constant/color_constant.dart';
 import 'package:doubanapp/http/API.dart';
 import 'package:doubanapp/pages/movie/hot_soon_tab_bar.dart';
-import 'package:doubanapp/widgets/item_count_title.dart';
-import 'package:doubanapp/widgets/subject_mark_image_widget.dart';
-import 'package:doubanapp/bean/subject_entity.dart';
-import 'package:doubanapp/bean/top_item_bean.dart';
+import 'package:doubanapp/pages/movie/title_widget.dart';
+import 'package:doubanapp/widgets/image/LaminatedImage.dart';
 import 'package:doubanapp/widgets/rating_bar.dart';
-import 'package:doubanapp/constant/color_constant.dart';
-import 'dart:math' as math;
-import 'package:doubanapp/widgets/image/cache_img_radius.dart';
-import 'package:doubanapp/constant/constant.dart';
-import 'package:doubanapp/pages/movie/top_item_widget.dart';
-import 'package:doubanapp/router.dart';
-import 'package:doubanapp/http/http_request.dart';
+import 'package:doubanapp/widgets/subject_mark_image_widget.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 //import 'package:palette_generator/palette_generator.dart';
 import 'package:flutter/rendering.dart';
-import 'package:doubanapp/repository/movie_repository.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:doubanapp/widgets/loading_widget.dart';
-import 'package:doubanapp/widgets/image/LaminatedImage.dart';
-import 'package:flutter/material.dart';
-import 'package:doubanapp/constant/text_size_constant.dart';
-import 'package:doubanapp/constant/color_constant.dart';
+
+import '../../douban_router.dart';
 
 final API _api = API();
 
@@ -314,7 +303,7 @@ class _HotComingSoonWidgetState extends State<_HotComingSoonWidget> {
         ),
       ),
       onTap: () {
-        Router.push(context, Router.detailPage, comingSoonBean.id);
+        DoubanRouter.push(context, DoubanRouter.detailPage, comingSoonBean.id);
       },
     );
   }
@@ -359,7 +348,7 @@ class _HotComingSoonWidgetState extends State<_HotComingSoonWidget> {
         ),
       ),
       onTap: () {
-        Router.push(context, Router.detailPage, hotMovieBean.id);
+        DoubanRouter.push(context, DoubanRouter.detailPage, hotMovieBean.id);
       },
     );
   }

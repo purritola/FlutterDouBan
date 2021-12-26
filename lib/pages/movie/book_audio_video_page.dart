@@ -1,9 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'dart:math' as math;
+
 import 'package:doubanapp/widgets/my_tab_bar_widget.dart';
 import 'package:doubanapp/widgets/search_text_field_widget.dart';
-import 'package:doubanapp/router.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+
+import '../../douban_router.dart';
 
 var titleList = ['电影', '电视', '综艺', '读书', '音乐', '同城'];
 
@@ -37,9 +39,9 @@ class _BookAudioVideoPageState extends State<BookAudioVideoPage>
   List<Widget> getTabList() {
     return titleList
         .map((item) => Text(
-      '$item',
-      style: TextStyle(fontSize: 15),
-    ))
+              '$item',
+              style: TextStyle(fontSize: 15),
+            ))
         .toList();
   }
 
@@ -66,7 +68,7 @@ Widget _getNestedScrollView(Widget tabBar) {
               child: SearchTextFieldWidget(
                 hintText: hintText,
                 onTab: () {
-                  Router.push(context, Router.searchPage, hintText);
+                  DoubanRouter.push(context, DoubanRouter.searchPage, hintText);
                 },
               ),
             ),

@@ -1,8 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:doubanapp/constant/text_size_constant.dart';
 import 'package:doubanapp/constant/color_constant.dart';
+import 'package:doubanapp/constant/text_size_constant.dart';
+import 'package:flutter/material.dart';
+
 import '../../constant/constant.dart';
+
 typedef TabCallBack = void Function(int index);
+
 //影院热映、即将上映 tab
 class HotSoonTabBar extends StatefulWidget {
   final state = _HotSoonTabBarState();
@@ -37,8 +40,6 @@ class _HotSoonTabBarState extends State<HotSoonTabBar>
   int comingSoonCount = 0;
   int selectIndex = 0;
 
-
-
   @override
   void initState() {
     super.initState();
@@ -53,14 +54,16 @@ class _HotSoonTabBarState extends State<HotSoonTabBar>
     _tabController = TabController(vsync: this, length: 2);
     _tabController.addListener(listener);
     tabBar = TabBar(
-      tabs: [Padding(
-        padding: const EdgeInsets.only(bottom: Constant.TAB_BOTTOM),
-        child: Text('影院热映'),
-      ),
-      Padding(
-        padding: const EdgeInsets.only(bottom: Constant.TAB_BOTTOM),
-        child: Text('即将上映'),
-      )],
+      tabs: [
+        Padding(
+          padding: const EdgeInsets.only(bottom: Constant.TAB_BOTTOM),
+          child: Text('影院热映'),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(bottom: Constant.TAB_BOTTOM),
+          child: Text('即将上映'),
+        )
+      ],
       indicatorColor: selectColor,
       labelColor: selectColor,
       labelStyle: selectStyle,
@@ -85,9 +88,8 @@ class _HotSoonTabBarState extends State<HotSoonTabBar>
     );
   }
 
-
   void listener() {
-    if(_tabController.indexIsChanging){
+    if (_tabController.indexIsChanging) {
       var index = _tabController.index;
       print("HotSoonTabBar index changing=$index");
       selectIndex = index;
@@ -103,8 +105,6 @@ class _HotSoonTabBarState extends State<HotSoonTabBar>
       });
     }
   }
-
-
 
   @override
   void dispose() {
@@ -157,5 +157,4 @@ class _HotSoonTabBarState extends State<HotSoonTabBar>
   void setTabCallBack(TabCallBack onTabCallBack) {
     this.onTabCallBack = onTabCallBack;
   }
-
 }

@@ -1,14 +1,14 @@
-import 'package:flutter/material.dart';
-import 'package:doubanapp/widgets/search_text_field_widget.dart';
-import 'package:doubanapp/pages/home/home_app_bar.dart' as myapp;
-import 'package:doubanapp/http/http_request.dart';
-import 'package:doubanapp/http/mock_request.dart';
-import 'package:doubanapp/http/API.dart';
 import 'package:doubanapp/bean/subject_entity.dart';
-import 'package:doubanapp/widgets/image/radius_img.dart';
 import 'package:doubanapp/constant/constant.dart';
+import 'package:doubanapp/http/API.dart';
+import 'package:doubanapp/http/mock_request.dart';
+import 'package:doubanapp/pages/home/home_app_bar.dart' as myapp;
+import 'package:doubanapp/widgets/image/radius_img.dart';
+import 'package:doubanapp/widgets/search_text_field_widget.dart';
 import 'package:doubanapp/widgets/video_widget.dart';
-import 'package:doubanapp/router.dart';
+import 'package:flutter/material.dart';
+
+import '../../douban_router.dart';
 
 ///首页，TAB页面，显示动态和推荐TAB
 class HomePage extends StatelessWidget {
@@ -38,7 +38,7 @@ DefaultTabController getWidget() {
             // This is not necessary if the "headerSliverBuilder" only builds
             // widgets that do not overlap the next sliver.
             handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
-            child: myapp.SliverAppBar(
+            sliver: myapp.SliverAppBar(
               pinned: true,
               expandedHeight: 120.0,
               primary: true,
@@ -52,7 +52,8 @@ DefaultTabController getWidget() {
                     hintText: '影视作品中你难忘的离别',
                     margin: const EdgeInsets.only(left: 15.0, right: 15.0),
                     onTab: () {
-                      Router.push(context, Router.searchPage, '影视作品中你难忘的离别');
+                      DoubanRouter.push(
+                          context, DoubanRouter.searchPage, '影视作品中你难忘的离别');
                     },
                   ),
                   alignment: Alignment(0.0, 0.0),
@@ -288,15 +289,16 @@ class _SliverContainerState extends State<SliverContainer> {
   }
 
   getContentVideo(int index) {
-    if(!mounted){
+    if (!mounted) {
       return Container();
     }
     return VideoWidget(
-      index == 1 ? Constant.URL_MP4_DEMO_0 :  Constant.URL_MP4_DEMO_1,
+      index == 1 ? Constant.URL_MP4_DEMO_0 : Constant.URL_MP4_DEMO_1,
       showProgressBar: false,
     );
   }
 }
+
 ///动态TAB
 _loginContainer(BuildContext context) {
   return Align(
@@ -328,7 +330,7 @@ _loginContainer(BuildContext context) {
                 borderRadius: const BorderRadius.all(Radius.circular(6.0))),
           ),
           onTap: () {
-            Router.push(context, Router.searchPage, '搜索笨啦灯');
+            DoubanRouter.push(context, DoubanRouter.searchPage, '搜索笨啦灯');
           },
         )
       ],

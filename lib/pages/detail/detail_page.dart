@@ -1,29 +1,24 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:doubanapp/util/palette_generator.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:doubanapp/http/API.dart';
-import 'package:doubanapp/bean/movie_detail_bean.dart';
-import 'package:doubanapp/pages/detail/detail_title_widget.dart';
-import 'package:doubanapp/util/pick_img_main_color.dart';
-import 'package:doubanapp/constant/constant.dart';
-import 'package:doubanapp/pages/detail/score_start.dart';
-import 'package:doubanapp/pages/detail/look_confirm_button.dart';
 import 'dart:math' as math;
-//import 'package:doubanapp/widgets/image/cached_network_image.dart';
-import 'package:doubanapp/router.dart';
-import 'package:doubanapp/widgets/item_count_title.dart';
+
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:doubanapp/bean/comments_entity.dart';
-import 'package:doubanapp/widgets/rating_bar.dart';
-import 'package:doubanapp/pages/photo_hero_page.dart';
-import 'package:doubanapp/widgets/animal_photo.dart';
-//import 'package:palette_generator/palette_generator.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/material.dart';
+import 'package:doubanapp/bean/movie_detail_bean.dart';
+import 'package:doubanapp/constant/constant.dart';
+import 'package:doubanapp/http/API.dart';
 import 'package:doubanapp/http/http_request.dart';
 import 'package:doubanapp/http/mock_request.dart';
-import 'package:doubanapp/widgets/loading_widget.dart';
+import 'package:doubanapp/pages/detail/detail_title_widget.dart';
+import 'package:doubanapp/pages/detail/score_start.dart';
+import 'package:doubanapp/util/palette_generator.dart';
+import 'package:doubanapp/widgets/animal_photo.dart';
+import 'package:doubanapp/widgets/rating_bar.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+//import 'package:palette_generator/palette_generator.dart';
+import 'package:flutter/rendering.dart';
+
 import '../../bean/movie_long_comments_entity.dart';
+import '../../douban_router.dart';
 import '../../widgets/bottom_drag_widget.dart';
 import 'long_comment_widget.dart';
 
@@ -91,7 +86,6 @@ class _DetailPageState extends State<DetailPage> {
       ),
     );
   }
-
 
   ///所属频道
   SliverToBoxAdapter sliverTags() {
@@ -247,7 +241,7 @@ class _DetailPageState extends State<DetailPage> {
               ],
             ),
             onTap: () {
-              Router.push(context, Router.personDetailPage,
+              DoubanRouter.push(context, DoubanRouter.personDetailPage,
                   {'personImgUrl': imgUrl, 'id': id});
             },
           ),
@@ -327,7 +321,7 @@ class _DetailPageState extends State<DetailPage> {
                       ),
                     ),
                     onTap: () {
-                      Router.push(context, Router.playListPage,
+                      DoubanRouter.push(context, DoubanRouter.playListPage,
                           _movieDetailBean.trailers);
                     },
                   );
@@ -493,7 +487,7 @@ class _DetailPageState extends State<DetailPage> {
               padding: EdgeInsets.all(12.0),
             ),
             onTap: () {
-              Router.push(context, bean.author.alt, {'title': '个人主页'});
+              DoubanRouter.push(context, bean.author.alt, {'title': '个人主页'});
             },
           );
         }

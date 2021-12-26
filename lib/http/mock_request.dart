@@ -1,11 +1,11 @@
-import 'package:doubanapp/http/API.dart';
 import 'dart:async';
-import 'package:flutter/services.dart' show rootBundle;
 import 'dart:convert';
+
+import 'package:doubanapp/http/API.dart';
+import 'package:flutter/services.dart' show rootBundle;
 
 ///模拟数据
 class MockRequest {
-
   Future<dynamic> get(String action, {Map params}) async {
     return MockRequest.mock(action: getJsonName(action), params: params);
   }
